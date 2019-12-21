@@ -7,11 +7,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApp1.Presenter;
+using WindowsFormsApp1.View;
 
 namespace WindowsFormsApp1
 {
-    public partial class Accountant : Form
+    public partial class Accountant : Form, IAccountantView
     {
+        public CheckedListBox checkedListBox => checkedListBox1;
+        public AccountantPresenter presenter; 
+
         public Accountant()
         {
             InitializeComponent();
@@ -24,7 +29,9 @@ namespace WindowsFormsApp1
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Оплата не подтверждена");
+            CheckerItems.HasCheckedOrders(checkedListBox1.CheckedItems.Count);
+            presenter = new AccountantPresenter(this);
+            MessageBox.Show(presenter.GetStatusOfOrders());
         }
 
         private void Button2_Click(object sender, EventArgs e)
@@ -34,8 +41,15 @@ namespace WindowsFormsApp1
 
         private void Button3_Click(object sender, EventArgs e)
         {
-            Receipt newForm = new Receipt();
-            newForm.Show();
+            CheckerItems.HasCheckedOrders(checkedListBox1.CheckedItems.Count);
+            if (checkedListBox1.CheckedItems.Count > 1)
+            {
+                MessageBox.Show("Для приходной нужно выбрать только один заказ");
+                return;
+            }
+            presenter = new AccountantPresenter(this);
+            presenter.ConfirmReceipt();
+            MessageBox.Show("Приходная Оформлена");
         }
 
         private void Button5_Click(object sender, EventArgs e)

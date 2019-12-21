@@ -1,4 +1,6 @@
-﻿namespace WindowsFormsApp1
+﻿using WindowsFormsApp1.Presenter;
+
+namespace WindowsFormsApp1
 {
     partial class Storekeeper
     {
@@ -72,19 +74,20 @@
             // 
             // checkedListBox1
             // 
-            this.checkedListBox1.BackColor = System.Drawing.SystemColors.Menu;
-            this.checkedListBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.checkedListBox1.CheckOnClick = true;
-            this.checkedListBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.checkedListBox1.FormattingEnabled = true;
-            this.checkedListBox1.Items.AddRange(new object[] {
-            "order1 user1",
-            "order1 user2",
-            "order2 user1"});
-            this.checkedListBox1.Location = new System.Drawing.Point(186, 25);
-            this.checkedListBox1.Name = "checkedListBox1";
-            this.checkedListBox1.Size = new System.Drawing.Size(245, 130);
-            this.checkedListBox1.TabIndex = 12;
+            if (new StoreKeeperPresenter(this).ShowOrders()[0] != null)
+            {
+                this.checkedListBox1.BackColor = System.Drawing.SystemColors.Menu;
+                this.checkedListBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+                this.checkedListBox1.CheckOnClick = true;
+                this.checkedListBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+                this.checkedListBox1.FormattingEnabled = true;
+                this.checkedListBox1.Items.AddRange(new StoreKeeperPresenter(this).ShowOrders());
+                this.checkedListBox1.Location = new System.Drawing.Point(12, 25);
+                this.checkedListBox1.Name = "checkedListBox1";
+                this.checkedListBox1.Size = new System.Drawing.Size(525, 104);
+                this.checkedListBox1.TabIndex = 12;
+                this.checkedListBox1.SelectedIndexChanged += new System.EventHandler(this.checkedListBox1_SelectedIndexChanged);
+            }
             // 
             // Storekeeper
             // 

@@ -1,4 +1,6 @@
-﻿namespace WindowsFormsApp1
+﻿using WindowsFormsApp1.Services;
+
+namespace WindowsFormsApp1
 {
     partial class WareHouse
     {
@@ -30,19 +32,9 @@
         {
             System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Банан");
             System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Апельсин");
-            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Фрукты", new System.Windows.Forms.TreeNode[] {
+            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("Продукты", new System.Windows.Forms.TreeNode[] {
             treeNode1,
             treeNode2});
-            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Лук");
-            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Морковь");
-            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Картошка");
-            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("Овощи", new System.Windows.Forms.TreeNode[] {
-            treeNode4,
-            treeNode5,
-            treeNode6});
-            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("Продукты", new System.Windows.Forms.TreeNode[] {
-            treeNode3,
-            treeNode7});
             System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("Бумага");
             System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("Другие товары", new System.Windows.Forms.TreeNode[] {
             treeNode9});
@@ -58,23 +50,13 @@
             this.treeView1.Location = new System.Drawing.Point(-1, 1);
             this.treeView1.Name = "treeView1";
             treeNode1.Name = "Узел5";
-            treeNode1.Text = "Банан";
+            treeNode1.Text = new GetterGoods().GetStringProduct(ProductType.Apple);
             treeNode2.Name = "Узел6";
-            treeNode2.Text = "Апельсин";
-            treeNode3.Name = "Фрукты";
-            treeNode3.Text = "Фрукты";
-            treeNode4.Name = "Узел7";
-            treeNode4.Text = "Лук";
-            treeNode5.Name = "Узел8";
-            treeNode5.Text = "Морковь";
-            treeNode6.Name = "Узел9";
-            treeNode6.Text = "Картошка";
-            treeNode7.Name = "Овощи";
-            treeNode7.Text = "Овощи";
+            treeNode2.Text = new GetterGoods().GetStringProduct(ProductType.Orange);
             treeNode8.Name = "Продукты";
             treeNode8.Text = "Продукты";
             treeNode9.Name = "Бумага";
-            treeNode9.Text = "Бумага";
+            treeNode9.Text = new GetterGoods().GetStringProduct(ProductType.Papper);
             treeNode10.Name = "Другие товары";
             treeNode10.Text = "Другие товары";
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {

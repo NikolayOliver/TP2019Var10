@@ -1,4 +1,6 @@
-﻿namespace WindowsFormsApp1
+﻿using WindowsFormsApp1.Presenter;
+
+namespace WindowsFormsApp1
 {
     partial class CustomerManager
     {
@@ -38,7 +40,7 @@
             // 
             this.button3.BackColor = System.Drawing.Color.PaleGreen;
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button3.Location = new System.Drawing.Point(427, 261);
+            this.button3.Location = new System.Drawing.Point(506, 261);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(140, 67);
             this.button3.TabIndex = 10;
@@ -50,7 +52,7 @@
             // 
             this.button1.BackColor = System.Drawing.Color.PaleGreen;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button1.Location = new System.Drawing.Point(106, 261);
+            this.button1.Location = new System.Drawing.Point(104, 261);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(140, 67);
             this.button1.TabIndex = 8;
@@ -60,25 +62,26 @@
             // 
             // checkedListBox1
             // 
-            this.checkedListBox1.BackColor = System.Drawing.SystemColors.Menu;
-            this.checkedListBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.checkedListBox1.CheckOnClick = true;
-            this.checkedListBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.checkedListBox1.FormattingEnabled = true;
-            this.checkedListBox1.Items.AddRange(new object[] {
-            "order1 user1",
-            "order1 user2",
-            "order2 user1"});
-            this.checkedListBox1.Location = new System.Drawing.Point(128, 78);
-            this.checkedListBox1.Name = "checkedListBox1";
-            this.checkedListBox1.Size = new System.Drawing.Size(245, 130);
-            this.checkedListBox1.TabIndex = 7;
+            if (new CustomerManagerPresenter(this).GetDataOfOrders() != null)
+            {
+                this.checkedListBox1.BackColor = System.Drawing.SystemColors.Menu;
+                this.checkedListBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+                this.checkedListBox1.CheckOnClick = true;
+                this.checkedListBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+                this.checkedListBox1.FormattingEnabled = true;
+                this.checkedListBox1.Items.AddRange(new CustomerManagerPresenter(this).GetDataOfOrders());
+                this.checkedListBox1.Location = new System.Drawing.Point(0, 1);
+                this.checkedListBox1.Name = "checkedListBox1";
+                this.checkedListBox1.Size = new System.Drawing.Size(500, 234);
+                this.checkedListBox1.TabIndex = 7;
+                this.checkedListBox1.SelectedIndexChanged += new System.EventHandler(this.checkedListBox1_SelectedIndexChanged);
+            }
             // 
             // button4
             // 
             this.button4.BackColor = System.Drawing.Color.PaleGreen;
             this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button4.Location = new System.Drawing.Point(402, 78);
+            this.button4.Location = new System.Drawing.Point(506, 43);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(165, 95);
             this.button4.TabIndex = 11;

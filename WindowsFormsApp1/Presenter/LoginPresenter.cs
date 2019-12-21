@@ -11,17 +11,18 @@ namespace WindowsFormsApp1.Presenter
 {
     public class LoginPresenter : AbstractPresenter
     {
-        public LoginPresenter(ILogin loginView)
+        ILogin loginView => View as ILogin;
+        public LoginPresenter(ILogin loginView) 
+            :base(loginView)
         {
-            view = loginView;
         }
         
-        public UserModel GetCurrentUser() => new UserService((view as ILogin).Login).GetCurrentUser();
+        public UserModel GetCurrentUser() => new UserService(loginView.Login).GetCurrentUser();
 
         public void AddUser()
         {
             LoginModel login = new LoginModel();
-            login.LoginText = (view as ILogin).Login;
+            login.LoginText = loginView.Login;
             login.AddUser();
         }
     }

@@ -12,21 +12,32 @@ namespace WindowsFormsApp1.Presenter
 {
     public class CreaterOrderPresenter : AbstractPresenter
     {
-        ICreaterOrder orderView => view as ICreaterOrder;
+        ICreaterOrder orderView => View as ICreaterOrder;
         public UserModel currentUser;
-        public CreaterOrderPresenter(ICreaterOrder createrView)
+        CreaterOrders order;
+        public CreaterOrderPresenter(ICreaterOrder createrView) 
+            : base(createrView)
         {
-            view = createrView;
         }
 
         public void CreateOrder()
         {
-            CreaterOrders order = new CreaterOrders() { LoginName = currentUser.Name};
+            order = new CreaterOrders() { LoginName = currentUser.Name};
             order.NameGood = orderView.NameOrder;
             order.PhoneNumber = orderView.PhoneNumber;
             order.UserName = orderView.UserName;
             order.Count = Int32.Parse(orderView.Count);
             order.Address = orderView.Address;
+        }
+
+        public bool HasGoods() => 
+            order.HasGoods(order.Count);
+
+        public bool CorrectNameProduct() => 
+            order.CorrectNameProduct(order.NameGood);
+
+        public void PressConfirm()
+        {
             order.ConfirmOrder();
         }
     }

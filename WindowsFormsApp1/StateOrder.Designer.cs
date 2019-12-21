@@ -1,4 +1,6 @@
-﻿namespace WindowsFormsApp1
+﻿using WindowsFormsApp1.Services;
+
+namespace WindowsFormsApp1
 {
     partial class StateOrder
     {
@@ -85,19 +87,36 @@
             // 
             // checkedListBox1
             // 
-            this.checkedListBox1.BackColor = System.Drawing.SystemColors.Menu;
-            this.checkedListBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.checkedListBox1.CheckOnClick = true;
-            this.checkedListBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.checkedListBox1.FormattingEnabled = true;
-            this.checkedListBox1.Items.AddRange(new object[] {
-            "заказ1",
-            "заказ2",
-            "заказ3"});
-            this.checkedListBox1.Location = new System.Drawing.Point(134, 47);
-            this.checkedListBox1.Name = "checkedListBox1";
-            this.checkedListBox1.Size = new System.Drawing.Size(120, 84);
-            this.checkedListBox1.TabIndex = 5;
+
+            //this.checkedListBox1.BackColor = System.Drawing.SystemColors.Menu;
+            //this.checkedListBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            //this.checkedListBox1.CheckOnClick = true;
+            //this.checkedListBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            //this.checkedListBox1.FormattingEnabled = true;
+            //this.checkedListBox1.Items.AddRange(new object[] {
+            //    "Заказ 1",
+            //    "Заказ 2",
+            //    "Заказ 3"
+            //});
+            //this.checkedListBox1.Location = new System.Drawing.Point(134, 47);
+            //this.checkedListBox1.Name = "checkedListBox1";
+            //this.checkedListBox1.Size = new System.Drawing.Size(120, 84);
+            //this.checkedListBox1.TabIndex = 5;
+
+            if (GetLoginNameData() != null)
+            {
+                this.checkedListBox1.BackColor = System.Drawing.SystemColors.Menu;
+                this.checkedListBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+                this.checkedListBox1.CheckOnClick = true;
+                this.checkedListBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+                this.checkedListBox1.FormattingEnabled = true;
+                this.checkedListBox1.Items.AddRange(GetLoginNameData());
+                this.checkedListBox1.Location = new System.Drawing.Point(134, 47);
+                this.checkedListBox1.Name = "checkedListBox1";
+                this.checkedListBox1.Size = new System.Drawing.Size(120, 84);
+                this.checkedListBox1.TabIndex = 5;
+            }
+
             // 
             // StateOrder
             // 

@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsFormsApp1.Model;
+using WindowsFormsApp1.Services;
 
 namespace WindowsFormsApp1
 {
@@ -22,6 +23,11 @@ namespace WindowsFormsApp1
       
         private void Button1_Click(object sender, EventArgs e)
         {
+            if (!new CheckerToOrders().CanDoNewOrder(user.Name))
+            {
+                MessageBox.Show("У вас больше 3 заказов");
+                return;
+            }
             CreateOrder newForm = new CreateOrder(user);
             newForm.Show();
         }
@@ -33,7 +39,7 @@ namespace WindowsFormsApp1
 
         private void Button2_Click(object sender, EventArgs e)
         {
-            StateOrder newForm = new StateOrder();
+            StateOrder newForm = new StateOrder(user);
             newForm.Show();
         }
     }

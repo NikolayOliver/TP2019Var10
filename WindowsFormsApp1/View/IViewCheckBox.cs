@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using WindowsFormsApp1.Presenter;
+using System.Windows.Forms;
 
 namespace WindowsFormsApp1.View
 {
-    public interface IView
+    public interface IViewCheckBox : IView
     {
+        CheckedListBox checkedListBox { get; }
     }
 }

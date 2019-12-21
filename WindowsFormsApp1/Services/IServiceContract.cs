@@ -12,7 +12,7 @@ namespace WindowsFormsApp1.Services
 {
     interface IServiceContract<T> 
         where T : IModel
-    {// add, find  by id, может быть check statussss
+    {
         List<T> GetData();
         
         void AddElement();

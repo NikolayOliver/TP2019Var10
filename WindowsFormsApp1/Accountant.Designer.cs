@@ -1,4 +1,6 @@
-﻿namespace WindowsFormsApp1
+﻿using WindowsFormsApp1.Presenter;
+
+namespace WindowsFormsApp1
 {
     partial class Accountant
     {
@@ -67,21 +69,37 @@
             this.button1.Click += new System.EventHandler(this.Button1_Click);
             // 
             // checkedListBox1
-            // 
-            this.checkedListBox1.BackColor = System.Drawing.SystemColors.Menu;
-            this.checkedListBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.checkedListBox1.CheckOnClick = true;
-            this.checkedListBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.checkedListBox1.FormattingEnabled = true;
-            this.checkedListBox1.Items.AddRange(new object[] {
-            "order1 user1",
-            "order1 user2",
-            "order2 user1"});
-            this.checkedListBox1.Location = new System.Drawing.Point(246, 23);
-            this.checkedListBox1.Name = "checkedListBox1";
-            this.checkedListBox1.Size = new System.Drawing.Size(245, 130);
-            this.checkedListBox1.TabIndex = 16;
-            this.checkedListBox1.SelectedIndexChanged += new System.EventHandler(this.checkedListBox1_SelectedIndexChanged);
+            //// 
+
+            //this.checkedListBox1.BackColor = System.Drawing.SystemColors.Menu;
+            //this.checkedListBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            //this.checkedListBox1.CheckOnClick = true;
+            //this.checkedListBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            //this.checkedListBox1.FormattingEnabled = true;
+            //this.checkedListBox1.Items.AddRange(new object[] {
+            //    "order1 user2"
+            //});
+            //this.checkedListBox1.Location = new System.Drawing.Point(56, 23);
+            //this.checkedListBox1.Name = "checkedListBox1";
+            //this.checkedListBox1.Size = new System.Drawing.Size(633, 130);
+            //this.checkedListBox1.TabIndex = 16;
+            //this.checkedListBox1.SelectedIndexChanged += new System.EventHandler(this.checkedListBox1_SelectedIndexChanged);
+
+            if (new AccountantPresenter(this).ShowOrder().Length > 1)
+            {
+                this.checkedListBox1.BackColor = System.Drawing.SystemColors.Menu;
+                this.checkedListBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+                this.checkedListBox1.CheckOnClick = true;
+                this.checkedListBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+                this.checkedListBox1.FormattingEnabled = true;
+                this.checkedListBox1.Items.AddRange(new AccountantPresenter(this).ShowOrder());
+                this.checkedListBox1.Location = new System.Drawing.Point(56, 23);
+                this.checkedListBox1.Name = "checkedListBox1";
+                this.checkedListBox1.Size = new System.Drawing.Size(633, 130);
+                this.checkedListBox1.TabIndex = 16;
+                this.checkedListBox1.SelectedIndexChanged += new System.EventHandler(this.checkedListBox1_SelectedIndexChanged);
+            }
+
             // 
             // tabControl1
             // 

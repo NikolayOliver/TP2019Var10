@@ -87,6 +87,7 @@
     <Compile Include="Answer.Designer.cs">
       <DependentUpon>Answer.cs</DependentUpon>
     </Compile>
+    <Compile Include="CheckerItems.cs" />
     <Compile Include="Consumable.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -123,7 +124,9 @@
     <Compile Include="Info.Designer.cs">
       <DependentUpon>Info.cs</DependentUpon>
     </Compile>
+    <Compile Include="JsonRepositories\GoodsRepository.cs" />
     <Compile Include="JsonRepositories\OrdersRepository.cs" />
+    <Compile Include="JsonRepositories\ReceiptRepository.cs" />
     <Compile Include="JsonRepositories\UsersRepository.cs" />
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
@@ -135,6 +138,9 @@
     <Compile Include="Model\ModelForMVP\CreaterOrders.cs" />
     <Compile Include="Model\ModelForMVP\LoginModel.cs" />
     <Compile Include="Model\OrderModel.cs" />
+    <Compile Include="Model\OtherGood.cs" />
+    <Compile Include="Model\Product.cs" />
+    <Compile Include="Model\ReceiptModel.cs" />
     <Compile Include="Model\UserModel.cs" />
     <Compile Include="NewItem.cs">
       <SubType>Form</SubType>
@@ -148,24 +154,30 @@
     <Compile Include="PManager.Designer.cs">
       <DependentUpon>PManager.cs</DependentUpon>
     </Compile>
+    <Compile Include="Presenter\AccountantPresenter.cs" />
     <Compile Include="Presenter\CreaterOrderPresenter.cs" />
     <Compile Include="Presenter\AbstractPresenter.cs" />
+    <Compile Include="Presenter\CustomerManagerPresenter.cs" />
     <Compile Include="Presenter\LoginPresenter.cs" />
+    <Compile Include="Presenter\StoreKeeperPresenter.cs" />
+    <Compile Include="Presenter\WorkWithOrderPresenter.cs" />
+    <Compile Include="ProductType.cs" />
     <Compile Include="Questions.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Questions.Designer.cs">
       <DependentUpon>Questions.cs</DependentUpon>
     </Compile>
-    <Compile Include="Receipt.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Receipt.Designer.cs">
-      <DependentUpon>Receipt.cs</DependentUpon>
-    </Compile>
+    <Compile Include="Services\AbstractService.cs" />
+    <Compile Include="Services\AccountantService.cs" />
+    <Compile Include="Services\CheckerToOrders.cs" />
+    <Compile Include="Services\CustomerManagerService.cs" />
+    <Compile Include="Services\GetterGoods.cs" />
     <Compile Include="Services\IServiceContract.cs" />
     <Compile Include="Services\OrderService.cs" />
+    <Compile Include="Services\StoreKeeperService.cs" />
     <Compile Include="Services\UserService.cs" />
+    <Compile Include="Services\WorkerWithOrderService.cs" />
     <Compile Include="StateManager.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -197,9 +209,16 @@
     <Compile Include="UserQuestion.Designer.cs">
       <DependentUpon>UserQuestion.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\IAccountantView.cs" />
+    <Compile Include="View\ICheckerStatus.cs" />
     <Compile Include="View\ICreaterOrder.cs" />
+    <Compile Include="View\ICustomerManagerView.cs" />
     <Compile Include="View\ILogin.cs" />
+    <Compile Include="View\IReceiptView.cs" />
+    <Compile Include="View\IStoreKeeperView.cs" />
     <Compile Include="View\IView.cs" />
+    <Compile Include="View\IViewCheckBox.cs" />
+    <Compile Include="View\IWorkWithOrder.cs" />
     <Compile Include="WareHouse.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -244,9 +263,6 @@
     <EmbeddedResource Include="Questions.resx">
       <DependentUpon>Questions.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Receipt.resx">
-      <DependentUpon>Receipt.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="StateManager.resx">
       <DependentUpon>StateManager.cs</DependentUpon>
     </EmbeddedResource>
@@ -274,9 +290,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <None Include="ClassDiagram1.cd" />
     <None Include="Orders.json" />
     <None Include="packages.config" />
+    <None Include="Products.json" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -291,6 +307,8 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Receipt.txt" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -88,6 +88,18 @@ namespace WindowsFormsApp1
         {
             var presenter = new CreaterOrderPresenter(this) { currentUser = user };
             presenter.CreateOrder();
+            if (!presenter.CorrectNameProduct())
+            {
+                MessageBox.Show("На складе нет товаров с таким именем");
+                return;
+            }
+            presenter.CreateOrder();
+            if (!presenter.HasGoods())
+            {
+                MessageBox.Show("На складе недостаточно товаров этого типа");
+                return;
+            }
+            presenter.PressConfirm();
             MessageBox.Show("Заказ подтвержден");
         }
     }

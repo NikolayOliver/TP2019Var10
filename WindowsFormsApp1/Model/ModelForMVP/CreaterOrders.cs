@@ -23,5 +23,9 @@ namespace WindowsFormsApp1.Model.ModelForMVP
         {
             orderService.AddElement();
         }
+
+        public bool HasGoods(int count) => (orderService as OrderService).HasGoods(count);
+
+        public bool CorrectNameProduct(string name) => (orderService as OrderService).CorrectNameProduct(name);
     }
 }

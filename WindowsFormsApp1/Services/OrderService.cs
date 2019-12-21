@@ -11,7 +11,7 @@ using WindowsFormsApp1.Model;
 namespace WindowsFormsApp1.Services
 {
     // realize function, add check statuc,
-    class OrderService : IServiceContract<OrderModel>
+    public class OrderService : IServiceContract<OrderModel>
     {
         string nameOrder;
         string userName;
@@ -24,6 +24,8 @@ namespace WindowsFormsApp1.Services
 
         OrdersRepository ordersRepository => JsonSerializer.Deserialize<OrdersRepository>(File.ReadAllText(writePath));
 
+        GetterGoods goods = new GetterGoods();
+
         public void AddElement()
         {
             var id = CreateId();
@@ -34,11 +36,22 @@ namespace WindowsFormsApp1.Services
                 Count = count,
                 LoginName = loginName,
                 PhoneNumber = phoneNumber,
-                Status = StatusType.New,
+                Status = StatusType.New.ToString(),
                 Id = id,
                 UserName = userName
             };
-            SetOrdersJson(orderModel);
+            DeleteSomeProducts();
+            AddOrdersJson(orderModel);
+        }
+
+        public void DeleteSomeProducts()
+        {
+            GetterGoods goods = new GetterGoods();
+            goods.DeleteCountProducts(nameOrder, count);
+        }
+
+        public OrderService()
+        {
         }
 
         public OrderService(string nameOrder, string userName, int count, string address, string phoneNumber, string LoginName)
@@ -51,9 +64,15 @@ namespace WindowsFormsApp1.Services
             this.loginName = LoginName;
         }
 
-        public OrderModel FindElementById(string Id)
+        public OrderModel FindElementById(string id)
         {
-            return new OrderModel();
+            OrderModel orderModel = null;
+            foreach (var ordMod in ordersRepository.OrdersList)
+            {
+                if (ordMod.Id == id)
+                    orderModel = ordMod;
+            }
+            return orderModel;
         }
 
         public List<OrderModel> GetData()
@@ -66,7 +85,7 @@ namespace WindowsFormsApp1.Services
             return "Order " + (GetData().Count + 1);
         }
 
-        private void SetOrdersJson(OrderModel order)
+        private void AddOrdersJson(OrderModel order)
         {
             var orderRepository = ordersRepository;
 
@@ -81,6 +100,39 @@ namespace WindowsFormsApp1.Services
             }
 
             File.WriteAllText(writePath, JsonSerializer.Serialize<OrdersRepository>(orderRepository));
+        }
+
+        public void SetOrdersJson(OrdersRepository orderRepository)
+        {
+            File.WriteAllText(writePath, JsonSerializer.Serialize<OrdersRepository>(orderRepository));
+        }
+
+        public List<OrderModel> GetDataOfCurrentName(string name)
+        {
+            var list = GetData();
+            var listOfCurrentName = new List<OrderModel>();
+            foreach(var l in list)
+            {
+                if (l.LoginName == name)
+                {
+                    listOfCurrentName.Add(l);
+                }
+            }
+            return listOfCurrentName;
+        }
+
+        public bool HasGoods(int productsCount) =>
+            goods.GetCountOfCurrentProduct(nameOrder) >= productsCount;
+        
+
+        public bool CorrectNameProduct(string productName)
+        {
+            foreach (var n in goods.GetListNamePrroducts())
+            {
+                if (n == productName)
+                    return true;
+            }
+            return false;
         }
     }
 }
