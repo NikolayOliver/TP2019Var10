@@ -48,18 +48,6 @@ namespace WindowsFormsApp1
             this.button3.UseVisualStyleBackColor = false;
             this.button3.Click += new System.EventHandler(this.Button3_Click);
             // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.Color.Khaki;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button2.Location = new System.Drawing.Point(186, 179);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(140, 67);
-            this.button2.TabIndex = 14;
-            this.button2.Text = "Отгрузить заказчику";
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.Button2_Click);
-            // 
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.Khaki;
@@ -68,7 +56,7 @@ namespace WindowsFormsApp1
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(140, 67);
             this.button1.TabIndex = 13;
-            this.button1.Text = "Оформить";
+            this.button1.Text = "Отдать курьеру";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.Button1_Click);
             // 

@@ -6,6 +6,7 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using WindowsFormsApp1.JsonRepositories;
+using WindowsFormsApp1.Model;
 
 namespace WindowsFormsApp1.Services
 {
@@ -143,5 +144,38 @@ namespace WindowsFormsApp1.Services
 
             return 0;
         }
+
+        public string GetFinishedProducts()
+        {
+            StringBuilder stringBuilder = new StringBuilder();
+            foreach (var oth in GoodRepository.OtherGoods)
+            {
+                if (IsFinishedOtherGood(oth))
+                {
+                    stringBuilder.Append(oth.Name);
+                    stringBuilder.Append(" Количество:");
+                    stringBuilder.Append(oth.Count);
+                }
+            }
+
+            foreach (var oth in GoodRepository.Products)
+            {
+                if (IsFinishedProduct(oth))
+                {
+                    stringBuilder.Append(oth.Name);
+                    stringBuilder.Append(" Количество:");
+                    stringBuilder.Append(oth.Count);
+                }
+            }
+
+            return stringBuilder.ToString();
+        }
+
+        public bool IsFinishedOtherGood(OtherGood otherGood)
+        {
+            return otherGood.StartCount * 0.2 > otherGood.Count;
+        }
+
+        public bool IsFinishedProduct(Product product) => product.StartCount * 0.2 > product.Count;
     }
 }

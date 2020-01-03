@@ -14,5 +14,6 @@ namespace WindowsFormsApp1
         public static readonly string NonPaid = "Non PAID"; //не оплачено
         public static readonly string Ready = "Ready"; // готов на складе, осталось курьера подождать
         public static readonly string Assembled = "Assembled"; // Собран на складе
+        public static readonly string GiveToCourer = "giveToCourer"; // Отдан курьеру
     }
 }

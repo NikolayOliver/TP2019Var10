@@ -7,10 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApp1.View;
 
 namespace WindowsFormsApp1
 {
-    public partial class Info : Form
+    public partial class Info : Form, IOurFinishedView
     {
         public Info()
         {
@@ -18,6 +19,11 @@ namespace WindowsFormsApp1
         }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
         {
 
         }

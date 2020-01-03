@@ -118,6 +118,7 @@
     <Compile Include="CreateOrder.Designer.cs">
       <DependentUpon>CreateOrder.cs</DependentUpon>
     </Compile>
+    <Compile Include="ICreateOurOrder.cs" />
     <Compile Include="Info.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -126,6 +127,7 @@
     </Compile>
     <Compile Include="JsonRepositories\GoodsRepository.cs" />
     <Compile Include="JsonRepositories\OrdersRepository.cs" />
+    <Compile Include="JsonRepositories\OurOrdersRepository.cs" />
     <Compile Include="JsonRepositories\ReceiptRepository.cs" />
     <Compile Include="JsonRepositories\UsersRepository.cs" />
     <Compile Include="Login.cs">
@@ -139,6 +141,7 @@
     <Compile Include="Model\ModelForMVP\LoginModel.cs" />
     <Compile Include="Model\OrderModel.cs" />
     <Compile Include="Model\OtherGood.cs" />
+    <Compile Include="Model\OurOrderModel.cs" />
     <Compile Include="Model\Product.cs" />
     <Compile Include="Model\ReceiptModel.cs" />
     <Compile Include="Model\UserModel.cs" />
@@ -159,6 +162,7 @@
     <Compile Include="Presenter\AbstractPresenter.cs" />
     <Compile Include="Presenter\CustomerManagerPresenter.cs" />
     <Compile Include="Presenter\LoginPresenter.cs" />
+    <Compile Include="Presenter\OurOrdersPresenter.cs" />
     <Compile Include="Presenter\StoreKeeperPresenter.cs" />
     <Compile Include="Presenter\WorkWithOrderPresenter.cs" />
     <Compile Include="ProductType.cs" />
@@ -175,6 +179,7 @@
     <Compile Include="Services\GetterGoods.cs" />
     <Compile Include="Services\IServiceContract.cs" />
     <Compile Include="Services\OrderService.cs" />
+    <Compile Include="Services\OurOrderService.cs" />
     <Compile Include="Services\StoreKeeperService.cs" />
     <Compile Include="Services\UserService.cs" />
     <Compile Include="Services\WorkerWithOrderService.cs" />
@@ -211,9 +216,11 @@
     </Compile>
     <Compile Include="View\IAccountantView.cs" />
     <Compile Include="View\ICheckerStatus.cs" />
+    <Compile Include="View\ICreateOurOrdersView.cs" />
     <Compile Include="View\ICreaterOrder.cs" />
     <Compile Include="View\ICustomerManagerView.cs" />
     <Compile Include="View\ILogin.cs" />
+    <Compile Include="View\IOurFinishedView.cs" />
     <Compile Include="View\IReceiptView.cs" />
     <Compile Include="View\IStoreKeeperView.cs" />
     <Compile Include="View\IView.cs" />
@@ -291,6 +298,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <None Include="Orders.json" />
+    <None Include="OurOrders.json" />
     <None Include="packages.config" />
     <None Include="Products.json" />
     <None Include="Properties\Settings.settings">

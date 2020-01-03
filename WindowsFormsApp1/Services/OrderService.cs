@@ -10,7 +10,6 @@ using WindowsFormsApp1.Model;
 
 namespace WindowsFormsApp1.Services
 {
-    // realize function, add check statuc,
     public class OrderService : IServiceContract<OrderModel>
     {
         string nameOrder;

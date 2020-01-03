@@ -35,7 +35,16 @@ namespace WindowsFormsApp1.Services
                 if (listOrders[i + 1].Status == StatusType.NonPaid || listOrders[i + 1].Status == StatusType.Paid)
                     listOfOrdersData[i] = listOrders[i + 1].Id + " " + listOrders[i + 1].LoginName;
             }
-            return listOfOrdersData;
+
+            List<object> list = new List<object>();
+            foreach(var a in listOfOrdersData)
+            {
+                if (a != null)
+                {
+                    list.Add(a);
+                }
+            }
+            return list.ToArray();
         }
 
         public void CreateReceipt(string idOrder)

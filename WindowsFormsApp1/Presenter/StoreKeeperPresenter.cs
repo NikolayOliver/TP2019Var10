@@ -17,7 +17,7 @@ namespace WindowsFormsApp1.Presenter
         }
 
         public object[] ShowOrders() =>
-            service.ShowOrders();
+            (service as StoreKeeperService).ShowOrders();
 
         public void Assemblebatch()
         {
@@ -25,6 +25,15 @@ namespace WindowsFormsApp1.Presenter
             foreach (var ser in ViewCheckBox.checkedListBox.CheckedItems)
             {
                 serv.AssembleBatch(GetId(ser as string));
+            }
+        }
+
+        public void GiveToCourer()
+        {
+            var serv = (service as StoreKeeperService);
+            foreach (var ser in ViewCheckBox.checkedListBox.CheckedItems)
+            {
+                serv.GiveToCourer(GetId(ser as string));
             }
         }
     }

@@ -27,11 +27,6 @@ namespace WindowsFormsApp1
             MessageBox.Show("Заказ оформлен");
         }
 
-        private void Button2_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("Заказ отгружен");
-        }
-
         private void Button3_Click(object sender, EventArgs e)
         {
             if (checkedListBox1.CheckedItems.Count == 0)
